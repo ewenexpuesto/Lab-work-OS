@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>OSSE11</title>
+    <style>
+body {
+    background-color: #eeddaa;
+    max-width: 950px;
+}
+var {
+    color: blue;
+}
+.shifted {
+    margin-left: 1.2cm;
+}
+em {
+    color: red;
+}
+pre {
+    display: block;
+    color: maroon;
+}
+code {
+    color: saddlebrown;
+}
+.code, code, pre {
+    font-style: normal;
+    font-family: monospace;
+}
+.questions > li::marker {
+    content: "Question " counter(list-item) ". ";
+    font-weight: bold;
+}
+.questions > li {
+    margin-bottom: 1rem;
+    margin-left: 6em;
+}
+    </style>
+</head>
+<body>
+    <h1>OSSE11 &mdash; TP noté</h1>
+
+    <p>Ce sujet comporte quatres exercices :</p>
+    <ul>
+        <li>
+            Le premier exercice vous demande de donner des commandes shell
+            répondant à différents besoins.
+        </li>
+        <li>
+            Le deuxième exercice porte sur l'utilisation d'une commande
+            qui n'a pas été vue en cours / TP.
+        </li>
+        <li>
+            Le troisième exercice sert à vérifier que vous maîtrisez
+            suffisamment la syntaxe du shell pour réaliser un script simple.
+        </li>
+        <li>
+            Enfin, le quatrième exercice porte sur la réalisation
+            d'un script shell complet pour répondre à un problème concret.
+        </li>
+    </ul>
+
+    <p><em>À la fin</em> de ce TP noté, vous devrez rendre votre travail
+    sur <a href="http://exam.ensiie.fr">exam</a>.
+    Pour ce faire, vous devrez :</p> 
+    <ol>
+        <li>créer une archive contenant votre travail à l'aide de la commande
+<pre class="shifted">
+$ tar -C '/home/ewen.expuesto' -cjvf /tmp/rendu.tar.bz2 'OSSE_2024_TPN'
+</pre>
+        </li>
+        <li>vérifier que le contenu de cette archive est raisonnable grâce à la commande
+<pre class="shifted">
+$ tar -tvf /tmp/rendu.tar.bz2
+</pre>
+        </li>
+        <li>aller sur <a href="http://exam.ensiie.fr">exam</a>, vous identifier,
+        choisir le dépôt <var>osse_2024_tpn</var> et déposer le
+        fichier <code>rendu.tar.bz2</code>
+<!--
+        (votre login sera automatiquement ajouté au début du nom de votre fichier)
+-->
+<pre>
+</pre>
+        </li>
+        <li>vérifier que le hash du fichier reçu par le serveur <var>exam</var>
+            est identique à celui obtenu grâce à la commande
+<pre class="shifted">
+$ md5sum /tmp/rendu.tar.bz2
+</pre>
+        </li>
+    </ol>
+
+    <p>&nbsp;</p>
+
+    <p>Vous avez <em>1h30</em>.</p>
+
+    <p>&nbsp;</p>
+
+    <h2>Exercice 1 : Commandes shell</h2>
+
+    <p>Pour cet exercice, vous devez fournir vos réponses dans le fichier
+    <var>/home/ewen.expuesto/OSSE_2024_TPN/exercice_1.txt</var> (il a été généré en même temps que ce sujet).</p>
+
+    <p>Pour chacune des questions, on attend de vous que :</p>
+    <ul>
+        <li>vous indiquiez la (ou les) commande(s) shell permettant de répondre au besoin,</li>
+        <li>vous fournissiez la réponse obtenue lorsque cela s'avère pertinent.</li>
+    </ul>
+    <p>Les commandes devront être précédées du symbole <code>$</code>.
+    </p>
+
+    <p>Si besoin, vous pourrez aussi écrire vos propres lignes de
+    commentaires. Dans ce cas, chacune de ces lignes devra commencer
+    par <code>//</code>.
+    </p>
+
+    <p>À titre d'exemple, pour la question</p>
+    <div class="shifted" style="font-style: italic;">
+        Donner une commande affichant votre nom d'utilisateur et la machine
+        sur laquelle vous êtes.
+    </div>
+    <p>une réponse correcte est :</p>
+<pre class="shifted">
+$ echo "$(whoami) on $(hostname)"
+ewen.expuesto on pc227-11
+</pre>
+
+    <p>Pour information, il est possible de répondre parfaitement à chacune des questions
+    à l'aide d'une unique commande ou d'une suite de commandes reliées par des <code>|</code>.
+    </p>
+
+    <p>
+    Une réponse utilisant plusieurs commandes successives, des variables et/ou des fichiers
+    temporaires pourra aussi donner l'intégralité des points.
+    </p>
+
+    <p> Enfin, vous pouvez proposer une solution répondant seulement partiellement
+    au besoin exprimé dans la question. Dans ce cas, la note pour cette question
+    dépendra de la pertinence de la solution proposée et de l'éventuel commentaire
+    que vous apporterez.
+    </p>
+
+    <p>&nbsp;</p>
+
+    <div>
+        <ol class="questions">
+<li>
+    Donner une commande permettant de copier le contenu du répertoire
+    <var>/pub/FISE_OSSE11/exam</var> dans le répertoire <var>/tmp</var>.
+</li>
+<li>
+    Donner une commande permettant d'obtenir la taille du fichier <var>/home/ewen.expuesto/OSSE_2024_TPN/sujet.html</var>.
+</li>
+<li>
+    Donner une commande permettant d'afficher les 5 premières lignes du fichier
+    <var>/etc/passwd</var>.
+</li>
+<li>
+    Donner une commande permettant d'afficher le nom de tous les fichiers <cite>.pdf</cite>
+    présents dans le répertoire <var>/pub/FISE_OSSE11</var> et ses sous-répertoires.
+</li>
+<li>
+    Donner une commande permettant d'afficher la taille et le nom de chaque
+    fichier <cite>.pdf</cite> présent dans le répertoire <var>/pub/FISE_OSSE11</var> et
+    ses sous-répertoires.
+</li>
+<li>
+    Donner une commande affichant la liste des UE de la FISA.<br>
+
+    Le répertoire <var>/pub</var> contient, pour chaque UE de la FISA, un
+    répertoire dont le nom est <code>FISA_</code> suivi du nom de l'UE
+    (la partie qui nous intéresse).
+</li>
+        </ol>
+    </div>
+
+    <p>&nbsp;</p>
+    <h2>Exercice 2 : Manipulation d'un fichier <span class="code">.json</span>
+        avec la commande <span class="code">jq</span>
+    </h2>
+
+    <p>Pour cet exercice, vous devez fournir vos réponses dans le fichier
+    <var>/home/ewen.expuesto/OSSE_2024_TPN/exercice_2.txt</var> (il a été généré en même temps que ce sujet).<br>
+    Les consignes pour remplir ce fichier sont les mêmes que dans
+    l'exercice 1.</p>
+
+    <p>Le fichier <var>/pub/FISE_OSSE11/exam/fise_s3_2425.json</var> contient
+       des informations concernant les inscriptions aux différentes UE du
+       semestre 3 de l'ENSIIE pour l'année scolaire 2024-2025.
+    </p>
+
+    <p>Nous allons utiliser la commande <code>jq</code> pour extraire
+    certaines de ces informations.</p>
+
+    <p>Aucune connaissance sur le format <span class="code">json</span>
+       n'est requise pour pouvoir faire cet exercice. Toutes les informations
+       dont vous aurez besoin sont présentes dans la page de <code>man</code>
+       de la commande <code>jq</code>.
+    </p>
+
+    <p>&nbsp;</p>
+
+    <div>
+        <ol class="questions">
+<li>
+    Le fichier <var>fise_s3_2425.json</var> a été généré automatiquement,
+    et son contenu n'est pas spécialement facile à lire pour un humain.<br><br>
+
+    Idéalement, on souhaiterait voir des lignes raisonnablement courtes,
+    avec du texte correctement indenté et de la couleur.<br><br>
+
+    Utiliser la commande <code>jq</code> pour afficher le contenu du fichier
+    <var>fise_s3_2425.json</var> de manière lisible.<br><br>
+
+</li>
+<li>
+    Un objet <span class="code">json</span> est similaire à une structure
+    (mot-clé <code>struct</code>) en langage C.
+    Il contient différents champs auxquels on peut accéder grâce à leurs noms.<br><br>
+
+    Le fichier <var>fise_s3_2425.json</var> contient en fait un <em>tableau</em>
+    d'objets json. Chaque objet correspond à une UE du semestre 3, et
+    contient les champs :
+    <ul>
+    <li><span style="display: inline-block; width: 5em;">name</span>     = le code de l'UE</li>
+    <li><span style="display: inline-block; width: 5em;">id</span>       = le numéro (GID) associé à l'UE</li>
+    <li><span style="display: inline-block; width: 5em;">students</span> = la liste des étudiants inscrits à l'UE
+        (sous la forme d'un tableau de chaînes de caractères).
+    </li>
+    </ul><br>
+
+    Utiliser la commande <code>jq</code> pour afficher uniquement la liste des codes d'UE
+    (dans un ordre quelconque).
+</li>
+
+<li>
+    Utiliser la commande <code>jq</code> pour calculer le nombre d'UE du semestre 3.<br><br>
+
+    Pour cela, il suffit en fait de calculer la <em>longueur</em> du tableau
+    <span class="code">json</span> contenu dans le fichier <var>fise_s3_2425.json</var>.
+</li>
+
+        </ol>
+    </div>
+
+    <p>&nbsp;</p>
+<h2>Exercice 3 &mdash; Script shell</h2>
+
+<div>
+    <p>Le but de cet exercice est d'écrire un script <code>exercice_3.sh</code>,
+    qui prend au moins un argument. Pour chaque argument, le script vérifie
+    s'il s'agit d'un nom de fichier/répertoire existant, et affiche un message lorsque
+    ce n'est pas le cas.</p>
+
+    <p>En l'absence d'argument, le script devra afficher un message d'erreur.</p>
+
+    <p>Pour information, le fichier <var>/home/ewen.expuesto/OSSE_2024_TPN/exercice_3.sh</var> a déjà été créé.
+    Son contenu est vide pour le moment.
+    </p>
+
+    <p>Voici quelques exemples d'appels au script, suivis du résultat attendu.</p>
+<pre class="shifted">
+$ sh exercice_3.sh 
+usage: exercice_3.sh &lt;file&gt; [&lt;file&gt; ...]
+
+$ sh exercice_3.sh '/tmp' '/temp' '/home' '~/xxxx/yyyy'
+'/temp' not found
+'~/xxxx/yyyy' not found
+</pre>
+</div>
+
+<div>
+    <ol class="questions">
+        <li>
+            Compléter le fichier <var>exercice_3.sh</var> afin d'obtenir le comportement souhaité.
+        </li>
+    </ol>
+</div>
+
+    <p>&nbsp;</p>
+<h2>Exercice 4 &mdash; Traitement de données</h2>
+
+<p>Le but de cet exercice est d'écrire un script <code>exercice_4.sh</code>
+permettant de manipuler et d'analyser des données stockées dans un fichier.
+</p>
+
+<p>Plus précisément, on dipose du fichier
+<var>/home/ewen.expuesto/OSSE_2024_TPN/exo4_data.txt</var> (il a été généré en même temps
+que ce sujet), dont les lignes sont au format</p>
+<pre class=shifted>
+    date product price
+</pre>
+<p>où :</p>
+<ul>
+    <li><code>date</code> est une date au format <code>YYYY-MM-DD</code>
+        (pratique lorsqu'on doit faire des comparaisons),
+    </li>
+    <li><code>product</code> est le nom d'un produit (chaîne de caractères sans espace),
+    </li>
+    <li><code>price</code> est le prix (arrondi à l'euro le plus proche) du produit
+        en question à la date donnée.
+    </li>
+</ul>
+
+<p>On pourra supposer que le contenu du fichier <var>exo4_data.txt</var> 
+est valide, et que lignes ont été triées par dates croissantes.</p>
+
+<p>Les questions (en partie indépendantes) de cet exercice portent chacune
+sur une partie précise du script à réaliser.</p>
+
+<p>Voici quelques exemples d'appels à la <em>version finale</em> du script, suivis
+du résultat attendu. Pour ces exemples, le fichier qui a été utilisé est
+<var>/home/ewen.expuesto/OSSE_2024_TPN/exo4_example.txt</var>.
+</p>
+
+<pre class="shifted">
+$ sh exercice_4.sh --help
+usage:
+  exercice_4.sh --help
+  exercice_4.sh --check-file
+  exercice_4.sh --list-products
+  exercice_4.sh &lt;product&gt; &lt;action&gt;
+  available actions are:
+    --list          shows all the prices for the given product
+    --extrema       prints the min and max prices for the given product
+    --fluctuation   shows the fluctuations of the price for the given product
+
+$ sh exercice_4.sh --list-products
+A
+B
+C
+
+$ sh exercice_4.sh A --list
+2018-05-05 A 10
+2018-05-09 A 15
+2018-05-17 A 15
+2018-05-23 A 10
+
+$ sh exercice_4.sh A --fluctuation
+price for 'A': 1 up, 1 stable, 1 down
+
+$ sh exercice_4.sh B --list
+2018-05-14 B 30
+2018-05-20 B 20
+2018-05-26 B 25
+  
+$ sh exercice_4.sh B --extrema 
+minimum price for 'B' was 20 on 2018-05-20
+maximum price for 'B' was 30 on 2018-05-14
+
+$ sh exercice_4.sh B --fluctuation
+price for 'B': 1 up, 0 stable, 1 down
+
+$ sh exercice_4.sh C --list
+2018-05-07 C 109
+2018-05-11 C 106
+2018-05-12 C 106
+2018-05-15 C 106
+2018-05-18 C 118
+2018-05-20 C 115
+2018-05-22 C 114
+
+$ sh exercice_4.sh C --fluctuation
+price for 'C': 1 up, 2 stable, 3 down
+</pre>
+
+
+
+<div>
+    <ol class="questions">
+        <li>
+            Dans le fichier <var>/home/ewen.expuesto/OSSE_2024_TPN/exercice_4.sh</var>, définir une variable (globale)
+            <code>FILE</code> dont la valeur sera fixée à
+            <code>/home/ewen.expuesto/OSSE_2024_TPN/exo4_data.txt</code>.<br>
+
+            Pour la suite, on s'efforcera d'utiliser la variable <code>$FILE</code>
+            (et pas le nom du fichier écrit en dur).
+        </li>
+
+        <li>
+            Faire en sorte que, si le script reçoit comme unique argument
+            la chaîne <code>--list-products</code>, alors il affiche
+            sur la sortie standard la liste de tous les produits mentionnés
+            dans le fichier <var>exo4_data.txt</var> (une ligne par
+            produit), triés par ordre alphabétique.
+        </li>
+
+        <li>
+            Faire en sorte que, si le script reçoit deux arguments et
+            que le deuxième est <code>--list</code>, alors il affiche
+            toutes les lignes du fichier <var>exo4_data.txt</var>
+            correspondant au produit donné dans le premier argument.
+        </li>
+
+        <li>
+            Ajouter une <em>fonction</em> nommée <code>usage</code>, qui
+            ne prend aucun argument et qui affiche sur la sortie d'erreur
+            les différentes façons d'utiliser le script <var>/home/ewen.expuesto/OSSE_2024_TPN/exercice_4.sh</var>.
+        </li>
+
+        <li>
+            Faire en sorte que le script affiche les différentes façons
+            de l'utiliser lorsqu'il reçoit comme unique argument la chaîne
+            <code>--help</code>.
+        </li>
+
+        <li>
+            Faire en sorte que, si le script reçoit deux arguments et
+            que le deuxième est <code>--extrema</code>, alors il calcule
+            et affiche le prix minimum et le prix maximum du produit
+            donné dans le premier argument.</br>
+
+            Chaque prix sera accompagné d'une date à laquelle le produit
+            a eu ce prix. Lorsque plusieurs dates conviennent, vous pouvez
+            choisir celle que vous afficherez.
+        </li>
+
+        <li>
+            Faire en sorte que, si le script reçoit deux arguments et
+            que le deuxième est <code>--fluctuation</code>, alors il
+            compte le nombre de fois où le prix du produit donné dans
+            le premier argument a augmenté / est resté stable / a diminué.
+            Il affiche ensuite les trois entiers correspondants dans
+            un message sur la sortie standard.<br>
+
+            On notera que, lorsqu'il y a <var>n</var> prix pour le produit,
+            la somme des trois entiers calculés vaut <var>n-1</var>.
+        </li>
+
+        <li>
+            Faire en sorte que, si le script n'est pas appelé correctement
+            (mauvais nombre d'arguments ou action inconnue), alors il affiche
+            les différents façons de l'utiliser et s'arrête avec le code
+            d'erreur <code>1</code>.
+        </li>
+
+        <li>
+            Ajouter le code correspondant au cas où on appelle le script
+            avec comme unique argument <code>--check-file</code>.<br>
+
+            Les points à vérifier sont (pas forcément par ordre de difficulté) :
+            <ul>
+                <li>Chaque ligne contient trois éléments séparés par un espace.</li>
+                <li>Le premier élément est bien au format <code>YYYY-MM-DD</code>.</li>
+                <li>Le troisième élément est bien un entier positif.</li>
+                <li>Les dates sont bien en ordre croissant.</li>
+            </ul>
+
+            En cas de problème, on pourra par exemple afficher le numéro de
+            la premier ligne invalide, accompagné d'un message précis sur la
+            nature du problème.
+        </li>
+
+    </ol>
+</div>
+
+    <p>&nbsp;</p>
+</body>
+</html>

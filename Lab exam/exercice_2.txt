@@ -1,0 +1,41 @@
+### Question 1.
+# Le fichier fise_s3_2425.json a été généré automatiquement, et son contenu
+# n'est pas spécialement facile à lire pour un humain.
+#
+# Idéalement, on souhaiterait voir des lignes raisonnablement courtes,
+# avec du texte correctement indenté et de la couleur.
+#
+# Utiliser la commande jq pour afficher le contenu du fichier fise_s3_2425.json
+# de manière lisible.
+#
+
+$jq -s ' ' /pub/FISE_OSSE11/exam/fise_s3_2425.json
+
+
+### Question 2.
+# Un objet json est similaire à une structure (mot-clé struct) en langage C.
+# Il contient différents champs auxquels on peut accéder grâce à leurs noms.
+#
+# Le fichier fise_s3_2425.json contient en fait un tableau d'objets json.
+# Chaque objet correspond à une UE du semestre 3, et contient les champs :
+# - name     = le code de l'UE
+# - id       = le numéro (GID) associé à l'UE
+# - students = la liste des étudiants inscrits à l'UE
+#              (sous la forme d'un tableau de chaînes de caractères).
+#
+# Utiliser la commande jq pour afficher uniquement la liste des codes d'UE
+# (dans un ordre quelconque).
+#
+
+$jq `name` /pub/FISE_OSSE11/exam/fise_s3_2425.json
+
+
+### Question 3.
+# Utiliser la commande jq pour calculer le nombre d'UE du semestre 3.
+# Pour cela, il suffit d'obtenir la longueur du tableau json contenu
+# dans le fichier fise_s3_2425.json.
+#
+
+$jq length /pub/FISE_OSSE11/exam/fise_s3_2425.json
+
+

@@ -1,0 +1,51 @@
+### Question 0.
+# Donner une commande affichant votre nom d'utilisateur et la machine sur laquelle vous êtes.
+
+$ echo "$(whoami) on $(hostname)"
+ewen.expuesto on pc227-11
+
+// Cette réponse est offerte par la maison ENSIIE.
+
+
+### Question 1.
+# Donner une commande permettant de copier le contenu du répertoire /pub/FISE_OSSE11/exam
+# dans le répertoire /tmp .
+
+$cp -r /pub/FISE_OSSE11/exam /tmp
+
+
+### Question 2.
+# Donner une commande permettant d'obtenir la taille du fichier /home/ewen.expuesto/OSSE_2024_TPN/sujet.html .
+
+$stat -c %s /home/ewen.expuesto/OSSE_2024_TPN/sujet.html
+
+
+### Question 3.
+# Donner une commande permettant d'afficher les 5 premières lignes du fichier /etc/passwd .
+
+$head -n 5 /etc/passwd
+
+
+### Question 4.
+# Donner une commande permettant d'afficher le nom de tous les fichiers .pdf
+# présents dans le répertoire /pub/FISE_OSSE11 et ses sous-répertoires.
+
+$find /pub/FISE_OSSE11 -type f -name "*.pdf"
+
+
+### Question 5.
+# Donner une commande permettant d'afficher la taille et le nom de chaque
+# fichier .pdf présent dans le répertoire /pub/FISE_OSSE11 et ses sous-répertoires.
+
+$find /pub/FISE_OSSE11 -type f -name "*.pdf" | stat -c %s
+
+
+### Question 6.
+# Donner une commande affichant la liste des UE de la FISA, triée par nom.
+#
+# Le répertoire /pub contient, pour chaque UE de la FISA, un répertoire dont
+# le nom est 'FISA_' suivi du nom de l'UE (la partie qui nous intéresse).
+
+$find /pub -type d -name "FISA_*"
+
+
